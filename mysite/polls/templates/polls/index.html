@@ -1,0 +1,13 @@
+{% extends 'polls/base.html' %}
+{% block content %}
+    <h1>template :D</h1>
+    <p>@@ kb viet cai gi vao day, thi viet cai nay <b>{{ name }}</b></p>
+    <h2>my item:</h2>
+    <ul>
+        {% for item in item %}
+            {% if item != 'phone' %}
+            <li>{{ item }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endblock %}
