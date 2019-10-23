@@ -1,0 +1,11 @@
+{% extends 'polls/base.html' %}
+
+{% block content %}
+    {% if q %}
+<h1 xmlns="http://www.w3.org/1999/html">{{ q.question_text }}</h1>
+        {% for item in q.choice_set.all %}
+            <p>{{ item.choice_text }}: <span style="color: red;">{{ item.vote }}</span></p>
+        {% endfor %}
+        <a href="{% url 'view_list' %}">vote again</a>
+    {% endif %}
+{% endblock %}

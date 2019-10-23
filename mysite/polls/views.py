@@ -15,3 +15,20 @@ def viewlist(request):
     list_question = Question.objects.all()
     context = {'questions': list_question}
     return render(request, 'polls/questions.html', context)
+
+
+def detailView(request, question_id):
+    q = Question.objects.get(pk=question_id)
+    return render(request, 'polls/detail_question.html', {'qs': q})
+
+
+def vote(request, question_id):
+    q = Question.objects.get(pk=question_id)
+    try:
+        data = request.POST['choice']
+        c = q.choice_set.get(pk=data)
+        c.vote = c.vote + 1
+        c.save()
+    except:
+        HttpResponse('not found choice')
+    return render(request, 'polls/result.html', {'q': q})
