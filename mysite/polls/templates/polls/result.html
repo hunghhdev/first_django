@@ -6,6 +6,6 @@
         {% for item in q.choice_set.all %}
             <p>{{ item.choice_text }}: <span style="color: red;">{{ item.vote }}</span></p>
         {% endfor %}
-        <a href="{% url 'view_list' %}">vote again</a>
+        <a href="{% url 'polls:view_list' %}">vote again</a>
     {% endif %}
 {% endblock %}
